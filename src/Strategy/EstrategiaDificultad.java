@@ -11,4 +11,16 @@ public interface EstrategiaDificultad {
      */
     public String getDificultad();
 
+    /**
+     * Obtiene el limite de tiempo.
+     * @return el limite de tiempo.
+     */
+    public int getLimiteTiempo();
+
+    /**
+     * Obtiene el numero de vidas.
+     * @return el numero de vidas.
+     */
+    public int getVidas();
+
 } 

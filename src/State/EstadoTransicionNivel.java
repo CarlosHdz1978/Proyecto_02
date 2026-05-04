@@ -3,7 +3,7 @@ package State;
 /**
  * Estado que representa el estado de transición entre niveles del videojuego.
  */
-public class TransicionNivel implements Estado {
+public class EstadoTransicionNivel implements EstadoEcoChems {
 
     /**
      * Obtiene el nombre del estado actual.
@@ -11,5 +11,13 @@ public class TransicionNivel implements Estado {
      */
     @Override
     public String getEstado(){ return "Transición de Nivel"; }
+
+    /**
+     * Pausar / reanudar el juego
+     */
+    @Override
+    public void PausarJuego(ContextoEstado contexto){
+        System.out.println("Pausa no disponible durante Transición de Nivel");
+    }
     
 }
