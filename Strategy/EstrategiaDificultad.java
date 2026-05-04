@@ -5,4 +5,5 @@ package Strategy;
  */
 public interface EstrategiaDificultad {
 
+    
 } 
