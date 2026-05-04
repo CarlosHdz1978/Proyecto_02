@@ -5,5 +5,12 @@ package Strategy;
  */
 public class DificultadDificil implements EstrategiaDificultad{
 
+    /**
+     * Obtiene el nombre de la dificultad actual.
+     * @return el nombre de la dificultad actual.
+     */
+    @Override
+    public String getDificultad(){ return "Dificil"; }
+
 
 }
