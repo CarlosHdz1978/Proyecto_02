@@ -23,4 +23,22 @@ public interface EstrategiaDificultad {
      */
     public int getVidas();
 
+    /**
+     * Obtiene la cantidad de residuos que se generarán.
+     * @return la cantidad de residuos.
+     */
+    public int getCantidadResiduos();
+
+    /**
+     * Obtiene cuantos puntos se ganaran por cada acierto.
+     * @return los puntos por aciertos.
+     */
+    public int getPuntosAciertos();
+
+    /**
+     * Obtiene cuantos puntos se perderan por cada error.
+     * @return los puntos por errores.
+     */
+    public int getPuntosError();
+
 } 

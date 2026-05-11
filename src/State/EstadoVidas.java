@@ -1,7 +1,5 @@
 package State;
 
-import EcoChemsModelo;
-
 /**
  * Interfaz que define los comportamientos según el numero de vidas restantes. 
  */
@@ -14,17 +12,15 @@ public interface EstadoVidas {
     public String getVidas();
 
     /**
-     * Notifica el cambio de vidas a la vista y al modelo.
-     * @param modelo Modelo del juego.
+     * Obtiene el emoji que representa el numero de vidas restantes.
+     * @return el emoji que representa el numero de vidas restantes.
      */
-    public abstract void entrar(Modelo modelo);
+    public String getEmoji();
 
     /**
      * Descuenta una vida y transiciona al siguiente estado.
-     * @param gestor Contexto de vidas.
-     * @param modelo Modelo del juego.
+     * @return el siguiente estado de vidas después de perder una vida.
      */
-    public abstract void perderVida(GestorVidas gestor, Modelo modelo);
-
+    public EstadoVidas perderVida();
 
 }

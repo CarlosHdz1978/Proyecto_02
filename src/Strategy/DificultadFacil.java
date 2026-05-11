@@ -17,14 +17,35 @@ public class DificultadFacil implements EstrategiaDificultad{
      * @return el limite de tiempo.
      */
     @Override
-    public int getLimiteTiempo(){ return 50; }
+    public int getLimiteTiempo(){ return 30; }
 
     /**
      * Obtiene el numero de vidas.
      * @return el numero de vidas.
      */
     @Override
-    public int getVidas(){ return 5; }
+    public int getVidas(){ return 3; }
+
+    /**
+     * Obtiene la cantidad de residuos que se generarán.
+     * @return la cantidad de residuos.
+     */
+    @Override
+    public int getCantidadResiduos(){ return 3; }
+
+    /**
+     * Obtiene cuantos puntos se ganaran por cada acierto.
+     * @return los puntos por aciertos.
+     */
+    @Override
+    public int getPuntosAciertos(){ return 10; }
+
+    /**
+     * Obtiene cuantos puntos se perderan por cada error.
+     * @return los puntos por errores.
+     */
+    @Override
+    public int getPuntosError(){ return 0; }
 
 }
 
