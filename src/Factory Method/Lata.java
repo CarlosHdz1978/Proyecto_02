@@ -1,8 +1,8 @@
-package Factory Method; 
+package FactoryMethod; 
 
 public class Lata extends ObjetoBasura {
 
-    public LataRefresco() {
+    public Lata() {
         super("Lata", TipoBasura.METAL);
     }
 }

@@ -1,4 +1,4 @@
-package Factory Method; 
+package FactoryMethod; 
 
 public class BasuraFactory {
     
