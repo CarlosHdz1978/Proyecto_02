@@ -1,6 +1,6 @@
 package State;
 
-import Modelo;
+import EcoChemsModelo;
 
 /**
  * Interfaz que define los comportamientos según el numero de vidas restantes. 

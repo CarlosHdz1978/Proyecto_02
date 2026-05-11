@@ -1,6 +1,6 @@
 package State;
 
-import Modelo;
+import EcoChemsModelo;
 
 /**
  * Estado que representa el estado de juego cuando el jugador tiene 2 vidas restantes.
