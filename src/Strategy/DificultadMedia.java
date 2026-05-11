@@ -35,10 +35,10 @@ public class DificultadMedia implements EstrategiaDificultad{
 
     /**
      * Obtiene cuantos puntos se ganaran por cada acierto.
-     * @return los puntos por aciertos.
+     * @return los puntos por acierto.
      */
     @Override
-    public int getPuntosAciertos(){ return 20; }
+    public int getPuntosAcierto(){ return 20; }
 
     /**
      * Obtiene cuantos puntos se perderan por cada error.

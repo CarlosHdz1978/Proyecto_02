@@ -31,9 +31,9 @@ public interface EstrategiaDificultad {
 
     /**
      * Obtiene cuantos puntos se ganaran por cada acierto.
-     * @return los puntos por aciertos.
+     * @return los puntos por acierto.
      */
-    public int getPuntosAciertos();
+    public int getPuntosAcierto();
 
     /**
      * Obtiene cuantos puntos se perderan por cada error.
