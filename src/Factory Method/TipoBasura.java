@@ -1,4 +1,4 @@
-package FactoryMethod; 
+package Factory_Method; 
 
 public enum TipoBasura {
     ORGANICO,   
