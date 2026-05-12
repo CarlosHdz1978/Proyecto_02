@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import MVC.*;
 
 public class EcoCheems {
 
@@ -39,9 +40,10 @@ public class EcoCheems {
                         break;
                     case 2:
                         System.out.println("\nPreparando el juego...");
-                        
-                        //Aqui falta conectarlo a todo lo relacionado al modelo MVC, en cuanto Diego lo tenga lo pongo
-
+                        Modelo modelo = new Modelo();
+                        Vista vista = new Vista();
+                        Controlador controlador = new Controlador(modelo, vista);
+                        controlador.iniciarPartida();
                         System.out.println("--- Partida terminada ---");
                         break;
                     case 3:
@@ -52,7 +54,7 @@ public class EcoCheems {
                 }
 
             } catch (NumberFormatException e) {
-                System.out.println("\n[!] Error: Entrada inválida. Debes teclear un número.");
+                System.out.println("\n[!] Error: Entrada inválida. Debes ingresar un número.");
             }
 
         } while (opcion != 3); 
@@ -70,7 +72,7 @@ public class EcoCheems {
         System.out.println("    3 - Papel y Cartón");
         System.out.println("    4 - Metales");
         System.out.println("* Tienes 3 vidas. Si fallas o se acaba el tiempo, pierdes una.");
-        System.out.println("* ¡Si pierdes todas las vidas, es Game Over!");
+        System.out.println("* Si pierdes todas las vidas se reinicia la partida *");
         System.out.println("---------------------------------------------");
     }
 }

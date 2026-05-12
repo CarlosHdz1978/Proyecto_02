@@ -10,7 +10,7 @@ public class Estado1Vida implements EstadoVidas {
      * @return el numero de vidas restantes.
      */
     @Override
-    public String getVidas(){ return "1"; }
+    public int getVidas(){ return 1; }
 
     /**
      * Obtiene el emoji que representa el numero de vidas restantes.

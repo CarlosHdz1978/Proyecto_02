@@ -1,5 +1,7 @@
 package Observer;
 
+import MVC.*;
+
 /**
  * Observador encargado de actualizar la interfaz de usuario
  * en respuesta a los mini eventos del juego.
@@ -13,14 +15,14 @@ package Observer;
 public class VistaObserver extends EventoJuegoObserver {
     
     /** Referencia a la vista del juego */
-    private EcoCheemsVista vista;
+    private Vista vista;
 
     /**
      * Constructor del observador de vista.
      * 
      * @param vista Referencia a la vista del juego
      */
-    public VistaObserver(EcoCheems vista) {
+    public VistaObserver(Vista vista) {
         this.vista = vista;
     }
 
@@ -34,7 +36,7 @@ public class VistaObserver extends EventoJuegoObserver {
      */
     @Override
     public void acierto(int puntosGanados, int rachaAtual) {
-        vista.mostrarMensaje("¡Correcto! +" puntosGanados + " puntos", false);
+        vista.mostrarMensaje("¡Correcto!" + puntosGanados + " puntos", false);
         if (rachaAtual >= 3) {
             vista.mostrarRacha(rachaAtual);
         }
@@ -79,6 +81,6 @@ public class VistaObserver extends EventoJuegoObserver {
      */
     @Override
     public void nuevoRecord(int nuevoRecord) {
-        vista.mostrarMensaje("¡Nuevo récord alcanzado: "+ nuevoRecord + " puntos!", false)
+        vista.mostrarMensaje("¡Nuevo récord alcanzado: "+ nuevoRecord + " puntos!", false);
     }
 }

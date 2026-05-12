@@ -1,5 +1,7 @@
 package Observer;
 
+import MVC.*; 
+
 /**
  * Observador especializado en gestionar y reaccionar a los nuevos récords.
  * 
@@ -14,14 +16,14 @@ public class RecordObserver extends EventoJuegoObserver {
     private int ultimoRecord;
     
     /** Referencia a la vista para mostrar una animación */
-    private EcoCheemsVista vista;
+    private Vista vista;
 
     /**
      * Constructor del observador de récords
      * 
      * @param vista Referencia a la vista del juego
      */
-    public RecordObserver(EcoCheemsVista vista) {
+    public RecordObserver(Vista vista) {
         this.vista = vista;
         this.ultimoRecord = 0;
     }
@@ -78,7 +80,7 @@ public class RecordObserver extends EventoJuegoObserver {
     @Override
     public void nuevoRecord(int nuevoRecord) {
         this.ultimoRecord = nuevoRecord;
-        vista.mostrarAnimacionRecord();
+        //vista.mostrarAnimacionRecord(); Metodo aun NO implementado
         vista.mostrarMensaje(" ¡Nuevo récord global: " + nuevoRecord + " puntos!", false);
     }
 

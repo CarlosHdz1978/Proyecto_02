@@ -9,7 +9,7 @@ public interface EstadoVidas {
      * Obtiene el numero de vidas restantes.
      * @return el numero de vidas restantes.
      */
-    public String getVidas();
+    public int getVidas();
 
     /**
      * Obtiene el emoji que representa el numero de vidas restantes.
