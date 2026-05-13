@@ -1,8 +1,25 @@
 import java.util.Scanner;
 import MVC.*;
 
+/**
+ * Clase principal del juego EcoCheems.
+ * Es el punto de entrada de la aplicación y gestiona el menú principal del juego.
+ * Permite al usuario ver instrucciones, iniciar una partida o salir de la aplicación.
+ */
 public class EcoCheems {
 
+    /**
+     * Método principal de la aplicación.
+     * Presenta un menú interactivo que permite al usuario:
+     * - Ver las instrucciones del juego
+     * - Iniciar una nueva partida
+     * - Salir de la aplicación
+     * 
+     * El menú se repite hasta que el usuario seleccione la opción de salir.
+     * Incluye manejo de excepciones para entradas inválidas.
+     * 
+     * @param args argumentos de línea de comandos (no utilizados)
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -62,6 +79,11 @@ public class EcoCheems {
         scanner.close(); 
     }
 
+    /**
+     * Muestra las instrucciones del juego en la consola.
+     * Explica el número de rondas, cómo se juega, los tipos de botes de reciclaje,
+     * el sistema de vidas y las condiciones de pérdida del juego.
+     */
     private static void mostrarInstrucciones() {
         System.out.println("\n--------------- INSTRUCCIONES ---------------");
         System.out.println("* El juego consta de 10 rondas.");
