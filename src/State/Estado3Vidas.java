@@ -17,7 +17,7 @@ public class Estado3Vidas implements EstadoVidas {
      * @return el emoji que representa el numero de vidas restantes.
      */
     @Override
-    public String getEmoji(){ return "❤️❤️❤️"; }
+    public String getEmoji(){ return "♥♥♥"; }
 
     /**
      * Descuenta una vida y transiciona al siguiente estado.

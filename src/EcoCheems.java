@@ -1,5 +1,11 @@
 import java.util.Scanner;
 import MVC.*;
+import Observer.SonidoObserver;
+import Observer.VistaObserver;
+import Strategy.DificultadDificil;
+import Strategy.DificultadFacil;
+import Strategy.DificultadMedia;
+import Strategy.EstrategiaDificultad;
 
 /**
  * Clase principal del juego EcoCheems.
@@ -56,12 +62,19 @@ public class EcoCheems {
                         mostrarInstrucciones();
                         break;
                     case 2:
-                        System.out.println("\nPreparando el juego...");
+                        EstrategiaDificultad dificultadElegida = seleccionarDificultad(scanner);
+                        
+                        //Instanciacion de los componentes de MVC
                         Modelo modelo = new Modelo();
                         Vista vista = new Vista();
+
+                        modelo.setDificultad(dificultadElegida); 
+                        
+                        modelo.agregarObservador(new SonidoObserver());
+                        modelo.agregarObservador(new VistaObserver(vista));
+                        
                         Controlador controlador = new Controlador(modelo, vista);
                         controlador.iniciarPartida();
-                        System.out.println("--- Partida terminada ---");
                         break;
                     case 3:
                         System.out.println("\n¡Gracias por jugar! Hasta luego.");
@@ -96,5 +109,33 @@ public class EcoCheems {
         System.out.println("* Tienes 3 vidas. Si fallas o se acaba el tiempo, pierdes una.");
         System.out.println("* Si pierdes todas las vidas se reinicia la partida *");
         System.out.println("---------------------------------------------");
+    }
+
+        /**
+     * Muestra un sub-menú para que el usuario elija el nivel de dificultad.
+     * @param scanner El scanner que ya estamos usando en el main.
+     * @return La instancia de la estrategia elegida.
+     */
+    private static EstrategiaDificultad seleccionarDificultad(Scanner scanner) {
+        int seleccion = 0;
+        while (true) {
+            System.out.println("\nSelecciona el nivel de dificultad:");
+            System.out.println("1. Fácil (3 vidas, tiempo relajado)");
+            System.out.println("2. Media (2 vidas, tiempo normal)");
+            System.out.println("3. Difícil (1 vida, tiempo rápido)");
+            System.out.print("Opción: ");
+            
+            try {
+                seleccion = Integer.parseInt(scanner.nextLine());
+                switch (seleccion) {
+                    case 1: return new DificultadFacil();
+                    case 2: return new DificultadMedia();
+                    case 3: return new DificultadDificil();
+                    default: System.out.println("[!] Opción no válida. Elige 1, 2 o 3.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("[!] Por favor, ingresa un número válido.");
+            }
+        }
     }
 }

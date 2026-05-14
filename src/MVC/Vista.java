@@ -1,7 +1,8 @@
 package MVC;
 
 import java.util.Scanner;
-import Factory.*; 
+import Factory.*;
+import State.*; 
 
 /**
  * Clase vista del patrón MVC que gestiona la presentación e interacción con el usuario.
@@ -32,8 +33,9 @@ public class Vista {
      * Presenta las opciones disponibles de botes para que el usuario elija.
      * @param basura el objeto de basura que se va a mostrar
      */
-    public void mostrarBasura(ObjetoBasura basura) {
+    public void mostrarBasura(ObjetoBasura basura, EstadoVidas vidas) {
         System.out.println("Apareció: ** " + basura.getNombre() + " **");
+        System.out.println(vidas.getEmoji());
         System.out.println("¿A qué bote pertenece?");
         System.out.println("[1] Orgánico  [2] Inorgánico  [3] Papel/Cartón  [4] Metal [5] Vidrio");
     }
@@ -71,10 +73,10 @@ public class Vista {
      * @param puntosTotales la puntuación final obtenida por el jugador
      * @param gano true si el jugador completó todas las rondas, false en caso contrario.
      */
-    public void mostrarFinDeJuego(int puntosTotales, boolean gano) {
+    public void mostrarFinDeJuego(int puntosTotales, boolean gano, int totalRondas) {
         System.out.println("\n=================================");
         if (gano) {
-            System.out.println("¡FELICIDADES! Terminaste las 10 rondas.");
+            System.out.println("¡FELICIDADES! Terminaste las " +  totalRondas + " rondas.");
         } else {
             System.out.println("¡GAME OVER! Te quedaste sin vidas.");
         }

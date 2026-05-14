@@ -3,7 +3,9 @@ package MVC;
 import java.util.ArrayList;
 import java.util.List;
 import Observer.EventoJuegoObserver;
-import State.*; 
+import State.*;
+import Strategy.DificultadFacil;
+import Strategy.EstrategiaDificultad;
 import Factory.*; 
 
 /**
@@ -16,6 +18,7 @@ public class Modelo {
     private int rachaActual; 
     private int rondaActual;
     private EstadoVidas estadoVidas;  
+    private EstrategiaDificultad dificultad;
     
     private List<EventoJuegoObserver> observadores;
 
@@ -27,8 +30,9 @@ public class Modelo {
         this.puntos = 0;
         this.rondaActual = 1;
         this.rachaActual = 0;
-        this.estadoVidas = new Estado3Vidas(); // El juego inicia con 3 vidas
+        this.estadoVidas = new Estado3Vidas();
         this.observadores = new ArrayList<>();
+        this.dificultad = new DificultadFacil();
     }
 
     /**
@@ -47,6 +51,16 @@ public class Modelo {
      * @return la puntuación actual del jugador.
      */
     public int getPuntuacion() { return puntos; }
+
+/**
+     * Obtiene el estado actual de las vidas del jugador.
+     * * Este método devuelve el objeto que encapsula la lógica y el comportamiento
+     * según la salud restante (por ejemplo, Estado3Vidas, Estado1Vida).
+     * * @return el objeto {@code EstadoVidas} que representa el estado de salud actual.
+     */
+    public EstadoVidas getVidasActuales() {
+        return this.estadoVidas;
+    }
 
     /**
      * Verifica si el juego ha terminado.
@@ -97,12 +111,15 @@ public class Modelo {
         int boteCorrecto = basura.getTipo().getNumeroBote(); 
 
         if (boteSeleccionado == boteCorrecto) {
-            puntos += 10; 
+            puntos += dificultad.getPuntosAcierto(); 
             rachaActual++;
-            notificarAcierto(10); 
+            notificarAcierto(puntos); 
             return true;      
         } else {
             rachaActual = 0; 
+
+            puntos += dificultad.getPuntosError(); 
+            if (puntos < 0) puntos = 0;
             
             this.estadoVidas = this.estadoVidas.perderVida();  
             
@@ -112,5 +129,29 @@ public class Modelo {
             
             return false;     
         }
+    }
+
+    /**
+    * Permite cambiar la dificultad desde el menú principal
+    */
+    public void setDificultad(EstrategiaDificultad nuevaDificultad) {
+        this.dificultad = nuevaDificultad;
+
+        //Aviso a los observadores del cambio de dificultad
+        for (EventoJuegoObserver obs : observadores) {
+            obs.cambioDificultad(nuevaDificultad.getDificultad());
+        }
+            
+        if (nuevaDificultad.getVidas() == 3) {
+            this.estadoVidas = new Estado3Vidas();
+        } else if (nuevaDificultad.getVidas() == 2) {
+            this.estadoVidas = new Estado2Vidas(); 
+        } else {
+            this.estadoVidas = new Estado1Vida();
+        }
+    }
+        
+    public EstrategiaDificultad getDificultad() {
+        return dificultad;
     }
 }

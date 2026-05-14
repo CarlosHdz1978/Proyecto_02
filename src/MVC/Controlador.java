@@ -15,6 +15,7 @@ public class Controlador {
      * 
      * @param modelo el modelo que contiene la lógica del juego
      * @param vista la vista que se encarga de mostrar la interfaz al jugador
+     * @param dificultad la dificultad escogida por el jugador
      */
     public Controlador(Modelo modelo, Vista vista) {
         this.modelo = modelo;
@@ -41,6 +42,8 @@ public class Controlador {
      */
     public void iniciarPartida() {
 
+        int totalRondas = modelo.getDificultad().getCantidadResiduos();
+
         SonidoObserver sonidoObs = new SonidoObserver();
         LogroObserver logroObs = new LogroObserver();
         EstadisticasObserver statsObs = new EstadisticasObserver();
@@ -54,12 +57,13 @@ public class Controlador {
         modelo.agregarObservador(vistaObs);
         modelo.agregarObservador(recordObs);
 
-        while (modelo.getRondaActual() <= 10 && !modelo.isGameOver()) {
+        while (modelo.getRondaActual() <= totalRondas && !modelo.isGameOver()) {
             
             vista.mostrarInicioRonda(modelo.getRondaActual());
 
             ObjetoBasura basuraDeLaRonda = BasuraFactory.generarBasuraAleatoria();
-            vista.mostrarBasura(basuraDeLaRonda);
+
+            vista.mostrarBasura(basuraDeLaRonda, modelo.getVidasActuales());
 
             int boteSeleccionado = vista.pedirBote();
             boolean fueCorrecto = modelo.evaluarRespuesta(boteSeleccionado, basuraDeLaRonda);
@@ -69,6 +73,6 @@ public class Controlador {
         }
 
         boolean terminoConExito = !modelo.isGameOver();
-        vista.mostrarFinDeJuego(modelo.getPuntuacion(), terminoConExito);
+        vista.mostrarFinDeJuego(modelo.getPuntuacion(), terminoConExito, totalRondas);
     }
 }

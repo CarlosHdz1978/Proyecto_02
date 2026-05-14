@@ -47,7 +47,7 @@ public class SonidoObserver extends EventoJuegoObserver {
     public void acierto(int puntosGanados, int rachaActual) {
         if (rachaActual >= 3) {
             System.out.println("[EFECTO: racha_winner]");
-            // reproducirSonido("src/sonidos/racha.wav"); 
+            reproducirSonido("src/Sonidos/racha.wav"); 
         } else {
             reproducirSonido("src/Sonidos/acierto.wav"); 
         }
