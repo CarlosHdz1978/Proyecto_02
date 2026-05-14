@@ -1,12 +1,13 @@
 package Observer;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.AudioInputStream;
+import java.io.File;
+
 /**
  * Observador encargado de reproducir efectos de sonido en respuesta
  * a los eventos del juego.
- * 
- * Actualmente simula los sonidos mediante mensajes en consola,
- * pero está diseñado para ser fácilmente extensible a audio real
- * (JavaFX MediaPlayer, etc.) en el futuro.
  * 
  * @author Syntax Error
  */
@@ -17,6 +18,22 @@ public class SonidoObserver extends EventoJuegoObserver {
      */
     public SonidoObserver() {
         // Constructor vacío
+    }
+
+    private void reproducirSonido(String rutaArchivo) {
+        try {
+            File archivoSonido = new File(rutaArchivo);
+            if (archivoSonido.exists()) {
+                AudioInputStream audioInput = AudioSystem.getAudioInputStream(archivoSonido);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioInput);
+                clip.start(); 
+            } else {
+                System.out.println("[!] Archivo de sonido no encontrado: " + rutaArchivo);
+            }
+        } catch (Exception e) {
+            System.out.println("[!] Error al reproducir sonido: " + e.getMessage());
+        }
     }
 
     /**
@@ -30,8 +47,9 @@ public class SonidoObserver extends EventoJuegoObserver {
     public void acierto(int puntosGanados, int rachaActual) {
         if (rachaActual >= 3) {
             System.out.println("[EFECTO: racha_winner]");
+            // reproducirSonido("src/sonidos/racha.wav"); 
         } else {
-            System.out.println("[EFECTO: acierto] ");
+            reproducirSonido("src/Sonidos/acierto.wav"); 
         }
     }
 
@@ -46,7 +64,7 @@ public class SonidoObserver extends EventoJuegoObserver {
         if (vidasRestantes == 0) {
             System.out.println("[EFECTO: game_over.]");
         } else {
-            System.out.println("[EFECTO: error]");
+            reproducirSonido("src/Sonidos/error.wav");
         }
     }
 
@@ -77,6 +95,6 @@ public class SonidoObserver extends EventoJuegoObserver {
      */
     @Override
     public void nuevoRecord(int nuevoRecord) {
-        System.out.println("[EFECTO: nuevo_record_fanfarria.]");
+        System.out.println("[EFECTO: nuevo_record]");
     }
 }
