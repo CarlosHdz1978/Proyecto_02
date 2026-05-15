@@ -1,0 +1,36 @@
+package Factory; 
+
+/**
+ * Clase abstracta que representa un objeto de basura dentro del juego.
+ * Define la estructura base para diferentes tipos de objetos que se pueden recoger en el juego EcoCheems.
+ */
+public abstract class ObjetoBasura {
+    protected String nombre;
+    protected TipoBasura tipo;
+
+    /**
+     * Constructor de la clase ObjetoBasura.
+     * Inicializa un nuevo objeto de basura con el nombre y tipo especificados.
+     * 
+     * @param nombre el nombre del objeto.
+     * @param tipo el tipo de basura al que pertenece.
+     */
+    public ObjetoBasura(String nombre, TipoBasura tipo) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+    }
+
+    /**
+     * Obtiene el nombre del objeto.
+     * 
+     * @return el nombre del objeto.
+     */
+    public String getNombre() { return nombre; }
+
+    /**
+     * Obtiene el tipo de basura al que pertenece el objeto.
+     * 
+     * @return el tipo de basura al que pertenece el objeto.
+     */
+    public TipoBasura getTipo() { return tipo; }
+}
