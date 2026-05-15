@@ -106,6 +106,7 @@ public class EcoCheems {
         System.out.println("    2 - Inorgánico");
         System.out.println("    3 - Papel y Cartón");
         System.out.println("    4 - Metales");
+        System.out.println("    5 - Vidrio");
         System.out.println("* Tienes 3 vidas. Si fallas o se acaba el tiempo, pierdes una.");
         System.out.println("* Si pierdes todas las vidas se reinicia la partida *");
         System.out.println("---------------------------------------------");

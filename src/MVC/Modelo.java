@@ -150,7 +150,7 @@ public class Modelo {
             this.estadoVidas = new Estado1Vida();
         }
     }
-        
+    
     public EstrategiaDificultad getDificultad() {
         return dificultad;
     }
