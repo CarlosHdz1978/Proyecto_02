@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MVC.SceneController">
    <children>
-      <Text layoutX="81.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido a EcoCheems!" textAlignment="CENTER" wrappingWidth="449.13000106811523">
+      <Text layoutX="81.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido a EcoCheems!" textAlignment="CENTER" wrappingWidth="449.13000106811523">
          <font>
             <Font size="33.0" />
          </font>
       </Text>
-      <Button layoutX="160.0" layoutY="207.0" mnemonicParsing="false" onAction="#switchToMensaje" prefHeight="73.0" prefWidth="291.0" text="Haz click aqui para continuar" />
+      <Button layoutX="189.0" layoutY="328.0" mnemonicParsing="false" onAction="#switchToMensaje" prefHeight="45.0" prefWidth="234.0" text="Haz click aqui para continuar" />
+      <ImageView fitHeight="213.0" fitWidth="433.0" layoutX="168.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagenes/cheemsBienvenida.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

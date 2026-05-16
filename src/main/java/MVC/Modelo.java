@@ -6,6 +6,11 @@ import Observer.EventoJuegoObserver;
 import State.*;
 import Strategy.DificultadFacil;
 import Strategy.EstrategiaDificultad;
+import main.java.State.Estado0Vidas;
+import main.java.State.Estado1Vida;
+import main.java.State.Estado2Vidas;
+import main.java.State.Estado3Vidas;
+import main.java.State.EstadoVidas;
 import Factory.ObjetoBasura;
 import State.*;
 import Factory.*; 
@@ -55,7 +60,7 @@ public class Modelo {
      */
     public int getPuntuacion() { return puntos; }
 
-/**
+    /**
      * Obtiene el estado actual de las vidas del jugador.
      * * Este método devuelve el objeto que encapsula la lógica y el comportamiento
      * según la salud restante (por ejemplo, Estado3Vidas, Estado1Vida).
@@ -143,9 +148,22 @@ public class Modelo {
         }
     }
 
+
     /**
-    * Permite cambiar la dificultad desde el menú principal
-    */
+     * Permite cambiar la dificultad del juego desde el menú principal.
+     * <p>
+     * Este método actualiza la estrategia de dificultad actual y realiza dos acciones adicionales:
+     * <ol>
+     * <li>Notifica a todos los observadores registrados ({@link EventoJuegoObserver}) sobre el cambio de dificultad.</li>
+     * <li>Actualiza dinámicamente el estado del contador de vidas ({@code estadoVidas}) asignando una nueva 
+     * instancia ({@link Estado3Vidas}, {@link Estado2Vidas} o {@link Estado1Vida}) de acuerdo con la cantidad 
+     * de vidas que determine la nueva configuración.</li>
+     * </ol>
+     * </p>
+     *
+     * @param nuevaDificultad El objeto {@link EstrategiaDificultad} que contiene las reglas, 
+     * el número de residuos y la configuración de vidas para la partida.
+     */
     public void setDificultad(EstrategiaDificultad nuevaDificultad) {
         this.dificultad = nuevaDificultad;
 
@@ -162,7 +180,16 @@ public class Modelo {
             this.estadoVidas = new Estado1Vida();
         }
     }
-    
+
+    /**
+     * Obtiene la estrategia de dificultad que se encuentra activa en el juego.
+     * <p>
+     * Es de utilidad para que otros componentes (como los controladores) consulten 
+     * los límites de la partida, por ejemplo, la cantidad máxima de residuos/rondas.
+     * </p>
+     *
+     * @return El objeto {@link EstrategiaDificultad} que rige la partida actual.
+     */
     public EstrategiaDificultad getDificultad() {
         return dificultad;
     }

@@ -19,20 +19,59 @@ import javafx.scene.control.Button;
 
 import Observer.*; 
 
+/**
+ * Clase controladora de la interfaz gráfica (Vista) para la pantalla principal del juego EcoCheems.
+ * <p>
+ * Se encarga de gestionar los componentes visuales definidos en el archivo FXML, interceptar 
+ * las interacciones del usuario (clics en los botes) y actualizar los elementos en pantalla 
+ * (puntuación, vidas, ronda y la imagen del residuo) reflejando el estado real del modelo.
+ * </p>
+ * * @author TuNombre o Equipo de Desarrollo
+ * @version 1.0
+ */
 public class JuegoController {
 
+    /** Etiqueta que despliega el nombre del residuo actual en pantalla. */
     @FXML private Label labelNombreBasura; 
+    
+    /** Etiqueta que muestra el número de la ronda actual. */
     @FXML private Label labelRonda;
+    
+    /** Etiqueta que muestra la cantidad de vidas restantes del jugador. */
     @FXML private Label labelVidas;
+    
+    /** Etiqueta que muestra el puntaje acumulado durante la partida. */
     @FXML private Label labelPuntos;
+    
+    /** Contenedor de imagen donde se renderiza visualmente el residuo actual. */
     @FXML private ImageView imagenBasura;
+    
+    /** Etiqueta de la pantalla final (GameOver) que exhibe el puntaje total obtenido. */
     @FXML private Label labelPuntajeFinal;
+    
+    /** Etiqueta que notifica en tiempo real si el jugador desbloqueó algún logro. */
     @FXML private Label labelLogro;
 
+    /** Referencia al modelo de datos que contiene el estado del juego. */
     private Modelo modelo;
+    
+    /** Referencia al controlador de la lógica interna del negocio. */
     private Controlador controladorLogico;
 
-    // Este método se llamará desde la pantalla anterior para pasar el modelo
+    /**
+     * Inicializa el estado del juego vinculando el modelo y configurando las acciones del controlador gráfico.
+     * <p>
+     * Este método se invoca externamente al cambiar de pantalla. Realiza las siguientes operaciones:
+     * <ul>
+     * <li>Instancia el {@link Controlador} lógico del juego.</li>
+     * <li>Dispara los observadores internos del sistema (sonido, estadísticas, etc.).</li>
+     * <li>Registra un observador anónimo de tipo {@link EventoJuegoObserver} para reaccionar e interactuar con la UI ante aciertos, errores y logros.</li>
+     * <li>Ejecuta la primera actualización visual de la pantalla.</li>
+     * </ul>
+     * </p>
+     *
+     * @param modelo El objeto {@link Modelo} que mantendrá los datos y lógica de la sesión de juego.
+     */
     public void inicializarJuego(Modelo modelo) {
         this.modelo = modelo;
         this.controladorLogico = new Controlador(modelo);
@@ -40,11 +79,11 @@ public class JuegoController {
         // 1. DISPARAMOS LOS OBSERVADORES INTERNOS (Sonido, Estadísticas, Detección de Logros)
         this.controladorLogico.configurarObservadores();
         
-        // 2. CREAMOS UN OBSERVADOR EN TIEMPO REAL PARA LA INTERFAZ GRÁFICA (JavaFX)
+        // Observador en tiempo real para la interfaz gráfica
         this.modelo.agregarObservador(new EventoJuegoObserver() {
             @Override
             public void acierto(int puntosGanados, int rachaActual) {
-                if (rachaActual != 5 && rachaActual != 10 && rachaActual != 15) {
+                if (rachaActual != 3 && rachaActual != 6 && rachaActual != 9) {
                     if (labelLogro != null) labelLogro.setText(""); 
                 }
             }
@@ -63,20 +102,47 @@ public class JuegoController {
             public void cambioDificultad(String nombreDificultad) {}
             @Override
             public void nuevoRecord(int nuevoRecord) {}
-    });
+        });
 
         actualizarPantalla(); // Muestra la primera basura
     }
 
-    // Métodos conectados a los clics de los 5 botes en Scene Builder
+    /**
+     * Evento desencadenado al hacer clic en el bote de residuos Orgánicos (ID/Número: 1).
+     */
     @FXML public void clicBoteOrganico() { procesarTurno(1); }
+    
+    /**
+     * Evento desencadenado al hacer clic en el bote de residuos Inorgánicos (ID/Número: 2).
+     */
     @FXML public void clicBoteInorganico() { procesarTurno(2); }
+    
+    /**
+     * Evento desencadenado al hacer clic en el bote de residuos de Papel y Cartón (ID/Número: 3).
+     */
     @FXML public void clicBotePapel() { procesarTurno(3); }
+    
+    /**
+     * Evento desencadenado al hacer clic en el bote de residuos Metálicos (ID/Número: 4).
+     */
     @FXML public void clicBoteMetales() { procesarTurno(4); }
+    
+    /**
+     * Evento desencadenado al hacer clic en el bote de residuos de Vidrio (ID/Número: 5).
+     */
     @FXML public void clicBoteVidrio() { procesarTurno(5); }
 
+    /**
+     * Procesa la jugada del usuario evaluando la selección del contenedor.
+     * <p>
+     * Se encarga de enviar la respuesta al controlador lógico, validar si se cumplen las 
+     * condiciones de finalización de partida (pérdida de vidas o fin de rondas según la dificultad) 
+     * y decidir si se transiciona a la pantalla final o si se refresca la interfaz para un nuevo turno.
+     * </p>
+     *
+     * @param numeroBote El identificador numérico correspondiente al contenedor seleccionado.
+     */
     private void procesarTurno(int numeroBote) {
-        
         controladorLogico.evaluarBoteSeleccionado(numeroBote);
 
         int maxRondas = modelo.getDificultad().getCantidadResiduos(); //Aqui falta modificar para que cambie en base a la dificultad
@@ -89,6 +155,14 @@ public class JuegoController {
         }
     }
 
+    /**
+     * Sincroniza y actualiza todos los componentes visuales de la interfaz de juego.
+     * <p>
+     * Extrae la información actualizada del modelo (ronda, vidas, puntos) y recupera la 
+     * instancia de {@link ObjetoBasura} en juego a través de la lógica interna para cargar 
+     * dinámicamente tanto su nombre de texto como su archivo de imagen desde los recursos del sistema.
+     * </p>
+     */
     public void actualizarPantalla() {
         // 1. Actualizamos los textos básicos de la interfaz
         labelRonda.setText("Ronda: " + modelo.getRondaActual());
@@ -121,6 +195,14 @@ public class JuegoController {
         }
     }
 
+    /**
+     * Carga y despliega la vista de juego terminado (GameOver).
+     * <p>
+     * Reutiliza la misma instancia controladora para inyectar los datos requeridos por la 
+     * pantalla de finalización (como el puntaje acumulado definitivo) y realiza el cambio de 
+     * escena (Scene) en la ventana (Stage) actual.
+     * </p>
+     */
     private void mostrarPantallaFinal() {
         try {
             // 1. Creamos el cargador
@@ -146,7 +228,9 @@ public class JuegoController {
     }
 
     /**
-     * Acción para el botón de "Volver al Menú" dentro de GameOver.fxml (Opcional)
+     * Gestiona la acción de regresar a la pantalla principal del juego desde la interfaz de Game Over.
+     *
+     * @param event El evento de acción {@link ActionEvent} gatillado por el clic del botón.
      */
     @FXML
     public void volverAlMenu(ActionEvent event) {
@@ -161,5 +245,4 @@ public class JuegoController {
             e.printStackTrace();
         }
     }
-    
 }

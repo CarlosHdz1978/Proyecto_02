@@ -29,7 +29,7 @@ public abstract class BasuraFactory {
             case 4: return new CajaRegalo();
             case 5: return new RolloPapel(); 
             
-            //Aqui ire agregando objetos
+            //Aqui es posible ir agregando nuevos objetos
 
             default: return null;
         }
