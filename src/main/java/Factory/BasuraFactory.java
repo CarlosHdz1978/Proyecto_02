@@ -19,7 +19,7 @@ public abstract class BasuraFactory {
      * @return un objeto de basura elegido aleatoriamente
      */
     public static ObjetoBasura generarBasuraAleatoria() {
-        int random = (int) (Math.random() * 5);
+        int random = (int) (Math.random() * 6);
         
         switch (random) {
             case 0: return new BotellaPlastico();
