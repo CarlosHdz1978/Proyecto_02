@@ -12,7 +12,7 @@ public class CajaRegalo extends ObjetoBasura {
      * Crea una nueva caja de regalo con el nombre "Caja de regalo" y tipo PAPEL_CARTON.
      */
     public CajaRegalo() {
-        super("Caja de regalo", TipoBasura.PAPEL_CARTON);
+        super("Caja de regalo", TipoBasura.PAPEL_CARTON, "/imagenes/cajaRegalo.png");
     }
 
     /**

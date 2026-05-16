@@ -12,7 +12,7 @@ public class BotellaPlastico extends ObjetoBasura {
      * Crea una nueva botella de plástico con el nombre "Botella de PET" y tipo INORGANICO.
      */
     public BotellaPlastico() {
-        super("Botella de PET", TipoBasura.INORGANICO);
+        super("Botella de PET", TipoBasura.INORGANICO, "/imagenes/botella.png");
     }
 
     /**

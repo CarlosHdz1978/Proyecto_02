@@ -12,7 +12,7 @@ public class RolloPapel extends ObjetoBasura {
      * Crea un neuvo rollo de papel con el nombre "Rollo de papel higienico" y tipo PAPEL_CARTON.
      */
     public RolloPapel() {
-        super("Rollo de papel higiénico", TipoBasura.PAPEL_CARTON);
+        super("Rollo de papel higiénico", TipoBasura.PAPEL_CARTON, "/imagenes/rolloPapel.png");
     }
 
     /**

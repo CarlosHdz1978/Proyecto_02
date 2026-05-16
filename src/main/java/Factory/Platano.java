@@ -12,7 +12,7 @@ public class Platano extends ObjetoBasura {
      * Crea una nueva lata de metal con el nombre "Cáscara de platano" y tipo ORGANICO.
      */
     public Platano() {
-        super("Cáscara de platano", TipoBasura.ORGANICO);
+        super("Cáscara de platano", TipoBasura.ORGANICO, "/imagenes/platano.png");
     }
 
     /**

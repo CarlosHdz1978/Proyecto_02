@@ -7,6 +7,7 @@ package Factory;
 public abstract class ObjetoBasura {
     protected String nombre;
     protected TipoBasura tipo;
+    protected String rutaImagen; 
 
     /**
      * Constructor de la clase ObjetoBasura.
@@ -15,9 +16,10 @@ public abstract class ObjetoBasura {
      * @param nombre el nombre del objeto.
      * @param tipo el tipo de basura al que pertenece.
      */
-    public ObjetoBasura(String nombre, TipoBasura tipo) {
+    public ObjetoBasura(String nombre, TipoBasura tipo, String rutaImagen) {
         this.nombre = nombre;
         this.tipo = tipo;
+        this.rutaImagen = rutaImagen; 
     }
 
     /**
@@ -33,4 +35,16 @@ public abstract class ObjetoBasura {
      * @return el tipo de basura al que pertenece el objeto.
      */
     public TipoBasura getTipo() { return tipo; }
+
+    /**
+     * Obtiene la ubicacion de la imagen del objeto (en java/resources/imagenes)
+     * 
+     * @return la ubicacion de la imagen del objeto
+     */
+    public String getRutaImagen() { return rutaImagen; }
+
+    // Extrae automáticamente el número de bote desde el Enum TipoBasura
+    public int getBoteCorrecto() { 
+        return tipo.getNumeroBote(); 
+    }
 }

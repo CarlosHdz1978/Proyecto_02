@@ -12,7 +12,7 @@ public class Espejo extends ObjetoBasura {
      * Crea una nuevo espejo con el nombre "Espejo roto" y tipo VIDRIO.
      */
     public Espejo() {
-        super("Espejo roto", TipoBasura.VIDRIO);
+        super("Espejo roto", TipoBasura.VIDRIO, "/imagenes/espejoRoto.png");
     }
 
     /**

@@ -12,7 +12,7 @@ public class Lata extends ObjetoBasura {
      * Crea una nueva lata de metal con el nombre "Lata" y tipo METAL.
      */
     public Lata() {
-        super("Lata", TipoBasura.METAL);
+        super("Lata", TipoBasura.METAL, "/imagenes/lata.png");
     }
 
     /**
