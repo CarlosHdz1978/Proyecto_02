@@ -16,16 +16,14 @@ public class EcoCheems extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Carga el archivo FXML de tu menú principal (asegúrate de que exista en src/main/resources)
         Parent root = FXMLLoader.load(getClass().getResource("/Bienvenida.fxml"));
         
-        // Creamos la escena con el diseño cargado
         Scene scene = new Scene(root);
         
-        // Configuramos la ventana (Stage)
-        primaryStage.setTitle("EcoCheems - ¡A reciclar!");
+        // Configuracion ventana
+        primaryStage.setTitle("EcoCheems");
         primaryStage.setScene(scene);
-        primaryStage.setResizable(false); // Opcional: evita que cambien el tamaño de la ventana
+        primaryStage.setResizable(false); 
         primaryStage.show();
     }
 
