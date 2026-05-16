@@ -6,6 +6,8 @@ import Observer.EventoJuegoObserver;
 import State.*;
 import Strategy.DificultadFacil;
 import Strategy.EstrategiaDificultad;
+import Factory.ObjetoBasura;
+import State.*;
 import Factory.*; 
 
 /**
@@ -45,6 +47,7 @@ public class Modelo {
      * @return el número de la ronda actual.
      */
     public int getRondaActual() { return rondaActual; }
+
     
     /**
      * Obtiene la puntuación actual del jugador.
@@ -68,6 +71,15 @@ public class Modelo {
      */
     public boolean isGameOver() {
         return this.estadoVidas instanceof Estado0Vidas;
+    }
+
+    /**
+     * Notifica a todos los observadores que se ha desbloqueado un logro.
+     */
+    public void notificarLogro(String nombreLogro) {
+        for (EventoJuegoObserver obs : observadores) {
+            obs.logroDesbloqueado(nombreLogro);
+        }
     }
 
     /**

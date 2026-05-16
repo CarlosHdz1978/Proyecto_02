@@ -31,7 +31,7 @@ public class DificultadFacil implements EstrategiaDificultad{
      * @return la cantidad de residuos.
      */
     @Override
-    public int getCantidadResiduos(){ return 3; }
+    public int getCantidadResiduos(){ return 5; }
 
     /**
      * Obtiene cuantos puntos se ganaran por cada acierto.

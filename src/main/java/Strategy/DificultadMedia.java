@@ -31,7 +31,7 @@ public class DificultadMedia implements EstrategiaDificultad{
      * @return la cantidad de residuos.
      */
     @Override
-    public int getCantidadResiduos(){ return 4; }
+    public int getCantidadResiduos(){ return 7; }
 
     /**
      * Obtiene cuantos puntos se ganaran por cada acierto.

@@ -18,7 +18,7 @@ public class Controlador {
 
     public void configurarObservadores() {
         SonidoObserver sonidoObs = new SonidoObserver();
-        LogroObserver logroObs = new LogroObserver();
+        LogroObserver logroObs = new LogroObserver(this.modelo);
         EstadisticasObserver statsObs = new EstadisticasObserver();
 
         modelo.agregarObservador(sonidoObs);

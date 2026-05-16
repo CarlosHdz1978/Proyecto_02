@@ -5,9 +5,10 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MVC.JuegoController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MVC.JuegoController">
    <children>
       <Label fx:id="labelRonda" text="ronda" />
       <Label fx:id="labelVidas" text="Labelvidas" />
@@ -49,5 +50,15 @@
             </ImageView>
          </children>
       </HBox>
+      <HBox alignment="CENTER" prefHeight="53.0" prefWidth="600.0" spacing="60.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inorganico" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Organico" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Papel/Cartón" wrappingWidth="84.14498901367188" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Metal" wrappingWidth="42.4630012512207" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vidrio" />
+         </children>
+      </HBox>
+      <Label fx:id="labelLogro" text="Label" />
    </children>
 </VBox>

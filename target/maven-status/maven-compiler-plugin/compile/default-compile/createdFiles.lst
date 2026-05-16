@@ -21,6 +21,7 @@ State/EstadoVidas.class
 MVC/SceneController.class
 Factory/TipoBasura.class
 Observer/RecordObserver.class
+MVC/JuegoController$1.class
 MVC/Vista.class
 Strategy/DificultadMedia.class
 Observer/EventoJuegoObserver.class

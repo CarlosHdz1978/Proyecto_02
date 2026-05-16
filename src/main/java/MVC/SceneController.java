@@ -20,8 +20,7 @@ public class SceneController {
     private Scene scene;
     private Parent root;
     private Modelo modelo = new Modelo();
-    
-    // 1. Enlazamos el ComboBox de Scene Builder
+
     @FXML private ComboBox<String> comboDificultad;
 
     /**
@@ -32,7 +31,7 @@ public class SceneController {
     public void initialize() {
         if (comboDificultad != null) {
             comboDificultad.getItems().addAll("Fácil", "Medio", "Difícil");
-            comboDificultad.setValue("Fácil"); // Opción seleccionada por defecto
+            comboDificultad.setValue("Fácil"); //Por defecto
         }
     }
 
@@ -54,18 +53,14 @@ public class SceneController {
                     modelo.setDificultad(new DificultadDificil());
                     break;
             }
-            // 1. Cargar el archivo FXML de la pantalla de juego
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Juego.fxml"));
             Parent root = loader.load();
 
-            // 2. Obtener el controlador de la pantalla de juego
-            // (Esto ya no será nulo porque arreglaste el fx:controller en el paso anterior)
             JuegoController juegoController = loader.getController();
 
-            // 3. Inicializar el juego enviándole tu Modelo
             juegoController.inicializarJuego(this.modelo);
 
-            // 4. Obtener la ventana actual y cambiar la escena a la del Juego
+            //Obtener la ventana actual y cambiar la escena a la del Juego
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);

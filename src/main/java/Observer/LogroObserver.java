@@ -1,5 +1,7 @@
 package Observer;
 
+import MVC.*; 
+
 /**
  * Observador encargado de gestionar los logros del juego.
  * 
@@ -14,12 +16,14 @@ public class LogroObserver extends EventoJuegoObserver {
     
     /** Racha máxima de aciertos consecutivos alcanzada */
     private int rachaMaxima;
+    private Modelo modelo; 
     
     /**
      * Constructor del observador de logros.
      * Inicializa la racha máxima a cero.
      */
-    public LogroObserver() {
+    public LogroObserver(Modelo modelo) {
+        this.modelo = modelo;
         this.rachaMaxima = 0;
     }
     
@@ -38,13 +42,14 @@ public class LogroObserver extends EventoJuegoObserver {
         }
         
         // Verificar logros por racha
-        if (rachaActual == 5) {
-            logroDesbloqueado(" ECOCHEEMS-NOVATO: 5 aciertos seguidos");
-        } else if (rachaActual == 10) {
-            logroDesbloqueado(" ECOCHEEMS-MAESTRO: 10 aciertos seguidos");
-        } else if (rachaActual == 15) {
-            logroDesbloqueado(" ECOCHEEMS-LEYENDA: 15 aciertos seguidos");
+        if (rachaActual == 3) {
+            modelo.notificarLogro("ECOCHEEMS-NOVATO: 3 aciertos seguidos");
+        } else if (rachaActual == 6) {
+            modelo.notificarLogro("ECOCHEEMS-EXPERTO: 6 aciertos seguidos");
+        } else if (rachaActual == 9) {
+            modelo.notificarLogro("ECOCHEEMS-LEYENDA: 9 aciertos seguidos");
         }
+
     }
     
     /**
@@ -55,7 +60,7 @@ public class LogroObserver extends EventoJuegoObserver {
     @Override
     public void error(int vidasRestantes) {
         if (vidasRestantes == 1) {
-            logroDesbloqueado(" ¡Cuidado! Te queda 1 vida, concéntrate.");
+            modelo.notificarLogro(" ¡Cuidado! Te queda 1 vida, concéntrate.");
         }
     }
     
