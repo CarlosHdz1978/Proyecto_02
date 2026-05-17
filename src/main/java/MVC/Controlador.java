@@ -3,10 +3,6 @@ package MVC;
 import Factory.BasuraFactory;
 import Factory.ObjetoBasura;
 import Observer.*;
-import main.java.Observer.EstadisticasObserver;
-import main.java.Observer.LogroObserver;
-import main.java.Observer.SonidoObserver;
-
 /**
  * Clase controladora de la lógica interna del juego EcoCheems.
  * Se encarga de coordinar la comunicación entre el modelo del juego, 

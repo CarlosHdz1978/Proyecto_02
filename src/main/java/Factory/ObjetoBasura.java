@@ -42,9 +42,4 @@ public abstract class ObjetoBasura {
      * @return la ubicacion de la imagen del objeto
      */
     public String getRutaImagen() { return rutaImagen; }
-
-    // Extrae automáticamente el número de bote desde el Enum TipoBasura
-    public int getBoteCorrecto() { 
-        return tipo.getNumeroBote(); 
-    }
 }
