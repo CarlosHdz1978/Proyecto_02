@@ -3,7 +3,7 @@ package Observer;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.AudioInputStream;
-import java.io.File;
+import java.net.URL;
 
 /**
  * Observador encargado de reproducir efectos de sonido en respuesta
@@ -22,8 +22,8 @@ public class SonidoObserver extends EventoJuegoObserver {
 
     private void reproducirSonido(String rutaArchivo) {
         try {
-            File archivoSonido = new File(rutaArchivo);
-            if (archivoSonido.exists()) {
+            URL archivoSonido = getClass().getResource(rutaArchivo);
+            if (archivoSonido != null) {
                 AudioInputStream audioInput = AudioSystem.getAudioInputStream(archivoSonido);
                 Clip clip = AudioSystem.getClip();
                 clip.open(audioInput);
@@ -46,10 +46,10 @@ public class SonidoObserver extends EventoJuegoObserver {
     @Override
     public void acierto(int puntosGanados, int rachaActual) {
         if (rachaActual >= 3) {
-            System.out.println("[EFECTO: racha_winner]");
-            reproducirSonido("src/Sonidos/racha.wav"); 
+            System.out.println("Felicidades! LLevas una racha de " + rachaActual + " rondas.");
+            reproducirSonido("/sonidos/racha.wav"); 
         } else {
-            reproducirSonido("src/Sonidos/acierto.wav"); 
+            reproducirSonido("/sonidos/acierto.wav"); 
         }
     }
 
@@ -62,9 +62,9 @@ public class SonidoObserver extends EventoJuegoObserver {
     @Override
     public void error(int vidasRestantes) {
         if (vidasRestantes == 0) {
-            System.out.println("[EFECTO: game_over.]");
+            System.out.println("El juego ha terminado!");
         } else {
-            reproducirSonido("src/Sonidos/error.wav");
+            reproducirSonido("/sonidos/error.wav");
         }
     }
 
@@ -75,7 +75,7 @@ public class SonidoObserver extends EventoJuegoObserver {
      */
     @Override
     public void logroDesbloqueado(String nombreLogro) {
-        System.out.println("[EFECTO: logro]");
+        System.out.println("Haz desbloqueado un logro!");
     }
     
     /**
