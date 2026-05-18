@@ -63,6 +63,7 @@ public class SonidoObserver extends EventoJuegoObserver {
     public void error(int vidasRestantes) {
         if (vidasRestantes == 0) {
             System.out.println("El juego ha terminado!");
+            reproducirSonido("/sonidos/finJuego.wav");
         } else {
             reproducirSonido("/sonidos/error.wav");
         }

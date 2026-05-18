@@ -21,8 +21,6 @@ import java.io.IOException;
  * los mensajes educativos y el inicio de la partida. Además, inicializa y asume la configuración 
  * de la estrategia de dificultad seleccionada por el usuario antes de arrancar el juego.
  * </p>
- * * @author TuNombre o Equipo de Desarrollo
- * @version 1.0
  */
 public class SceneController {
 
@@ -39,20 +37,20 @@ public class SceneController {
     private Modelo modelo = new Modelo();
 
     /** Componente de selección desplegable en la interfaz para determinar la dificultad de la partida. */
-    @FXML private ComboBox<String> comboDificultad;
+    @FXML private ComboBox<String> dificultad;
 
     /**
      * Inicializa los componentes de la interfaz de usuario de manera automática tras cargar el FXML.
      * <p>
-     * Se encarga de poblar el componente {@code comboDificultad} con las opciones de juego 
+     * Se encarga de poblar el componente {@code dificultad} con las opciones de juego 
      * ("Fácil", "Medio", "Difícil") y predefinir un valor inicial por defecto.
      * </p>
      */
     @FXML
     public void initialize() {
-        if (comboDificultad != null) {
-            comboDificultad.getItems().addAll("Fácil", "Medio", "Difícil");
-            comboDificultad.setValue("Fácil"); //Por defecto
+        if (dificultad != null) {
+            dificultad.getItems().addAll("Fácil", "Medio", "Difícil");
+            dificultad.setValue("Fácil"); //Por defecto
         }
     }
 
@@ -71,7 +69,7 @@ public class SceneController {
     public void iniciarJuego(ActionEvent event) {
         try {
             // 2. Revisamos qué dificultad seleccionó el usuario en la interfaz
-            String dificultadSeleccionada = comboDificultad.getValue();
+            String dificultadSeleccionada = dificultad.getValue();
             
             // 3. Aplicamos el patrón Strategy en base a la selección
             switch (dificultadSeleccionada) {

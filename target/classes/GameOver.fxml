@@ -6,14 +6,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #8FCB9B;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutX="109.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="El juego ha terminado!" textAlignment="CENTER">
+      <Text layoutX="87.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="El juego ha terminado!" textAlignment="CENTER">
          <font>
-            <Font size="36.0" />
+            <Font name="Comfortaa Regular" size="36.0" />
          </font>
       </Text>
-      <Button layoutX="193.0" layoutY="277.0" mnemonicParsing="false" onAction="#volverAlMenu" prefHeight="65.0" prefWidth="214.0" text="Volver al Menu Principal" />
-      <Label fx:id="labelPuntajeFinal" alignment="CENTER" contentDisplay="CENTER" layoutX="193.0" layoutY="161.0" prefHeight="18.0" prefWidth="177.0" text="Label" />
+      <Button layoutX="175.0" layoutY="277.0" mnemonicParsing="false" onAction="#volverAlMenu" prefHeight="65.0" prefWidth="214.0" style="-fx-background-color: green;" text="Volver al Menu Principal" textAlignment="CENTER" textFill="WHITE" underline="true">
+         <font>
+            <Font name="Comfortaa Light" size="13.0" />
+         </font></Button>
+      <Label fx:id="labelPuntajeFinal" alignment="CENTER" contentDisplay="CENTER" layoutX="87.0" layoutY="159.0" prefHeight="31.0" prefWidth="448.0" text="Label">
+         <font>
+            <Font size="21.0" />
+         </font></Label>
+      <Text layoutX="73.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Puedes volver a intentarlo cuando quieras!" wrappingWidth="454.67999267578125">
+         <font>
+            <Font name="Comfortaa Regular" size="20.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

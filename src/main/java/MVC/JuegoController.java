@@ -26,7 +26,7 @@ import Observer.*;
  * las interacciones del usuario (clics en los botes) y actualizar los elementos en pantalla 
  * (puntuación, vidas, ronda y la imagen del residuo) reflejando el estado real del modelo.
  * </p>
- * * @author TuNombre o Equipo de Desarrollo
+ * * @author Syntax_Error
  * @version 1.0
  */
 public class JuegoController {
@@ -79,7 +79,7 @@ public class JuegoController {
         // 1. DISPARAMOS LOS OBSERVADORES INTERNOS (Sonido, Estadísticas, Detección de Logros)
         this.controladorLogico.configurarObservadores();
         
-        // Observador en tiempo real para la interfaz gráfica
+        //Observador en tiempo real para la interfaz gráfica
         this.modelo.agregarObservador(new EventoJuegoObserver() {
             @Override
             public void acierto(int puntosGanados, int rachaActual) {
@@ -103,6 +103,7 @@ public class JuegoController {
             @Override
             public void nuevoRecord(int nuevoRecord) {}
         });
+        
 
         actualizarPantalla(); // Muestra la primera basura
     }
@@ -145,7 +146,7 @@ public class JuegoController {
     private void procesarTurno(int numeroBote) {
         controladorLogico.evaluarBoteSeleccionado(numeroBote);
 
-        int maxRondas = modelo.getDificultad().getCantidadResiduos(); //Aqui falta modificar para que cambie en base a la dificultad
+        int maxRondas = modelo.getDificultad().getCantidadResiduos();
         
         if (modelo.isGameOver() || modelo.getRondaActual() > maxRondas) {
             mostrarPantallaFinal();
@@ -168,7 +169,7 @@ public class JuegoController {
         labelRonda.setText("Ronda: " + modelo.getRondaActual());
         
         // CORREGIDO: Ahora llamamos a .getVidas() del estado actual
-        labelVidas.setText("Vidas: " + modelo.getVidasActuales().getVidas()); 
+        labelVidas.setText(modelo.getVidasActuales().getEmoji()); 
         
         labelPuntos.setText("Puntos: " + modelo.getPuntuacion());
 
@@ -205,7 +206,6 @@ public class JuegoController {
      */
     private void mostrarPantallaFinal() {
         try {
-            // 1. Creamos el cargador
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GameOver.fxml"));
             
             loader.setController(this); 

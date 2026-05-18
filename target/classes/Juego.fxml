@@ -1,22 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MVC.JuegoController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="697.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: #8FCB9B;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MVC.JuegoController">
    <children>
-      <Label fx:id="labelRonda" text="ronda" />
+      <Label fx:id="labelRonda" text="ronda">
+         <font>
+            <Font name="Comfortaa Regular" size="13.0" />
+         </font>
+      </Label>
       <Label fx:id="labelVidas" text="Labelvidas" />
-      <Label fx:id="labelPuntos" text="Labelpuntos" />
-      <Label text="El objeto a colocar es:" />
-      <Label fx:id="labelNombreBasura" text="Labelobjeto" />
-      <ImageView fx:id="imagenBasura" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-      <Label text="A cual contenedor corrresponde?" />
+      <Label fx:id="labelPuntos" text="Labelpuntos">
+         <font>
+            <Font name="Comfortaa Regular" size="13.0" />
+         </font>
+      </Label>
+      <Label text="El objeto a colocar es:">
+         <font>
+            <Font name="Comfortaa Light" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelNombreBasura" text="Labelobjeto">
+         <font>
+            <Font name="Comfortaa Regular" size="13.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imagenBasura" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <Label text="A cual contenedor corresponde?">
+         <font>
+            <Font name="Comfortaa Light" size="19.0" />
+         </font>
+      </Label>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
@@ -25,6 +52,13 @@
                      <image>
                         <Image url="@imagenes/inorganica.png" />
                      </image>
+                     <effect>
+                        <DropShadow>
+                           <color>
+                              <Color red="0.34210526943206787" green="0.34210526943206787" blue="0.34210526943206787" />
+                           </color>
+                        </DropShadow>
+                     </effect>
                   </ImageView>
                </children>
             </VBox>
@@ -32,33 +66,85 @@
                <image>
                   <Image url="@imagenes/organico.png" />
                </image>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color green="1.0" blue="0.20000000298023224" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" onMouseClicked="#clicBotePapel" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@imagenes/papel.png" />
                </image>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.9351851940155029" green="1.0" blue="0.02777777798473835" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" onMouseClicked="#clicBoteMetales" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@imagenes/metal.png" />
                </image>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="1.0" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </ImageView>
             <ImageView fitHeight="150.0" fitWidth="200.0" onMouseClicked="#clicBoteVidrio" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@imagenes/vidrio.png" />
                </image>
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.08518518507480621" green="0.03703703731298447" blue="1.0" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </ImageView>
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="53.0" prefWidth="600.0" spacing="60.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inorganico" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Organico" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Papel/Cartón" wrappingWidth="84.14498901367188" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Metal" wrappingWidth="42.4630012512207" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vidrio" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inorganico">
+               <font>
+                  <Font name="Comfortaa Regular" size="13.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Organico">
+               <font>
+                  <Font name="Comfortaa Regular" size="13.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Papel/Cartón" wrappingWidth="88.14498901367188">
+               <font>
+                  <Font name="Comfortaa Regular" size="12.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Metal" wrappingWidth="42.4630012512207">
+               <font>
+                  <Font name="Comfortaa Light" size="13.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vidrio">
+               <font>
+                  <Font name="Comfortaa Regular" size="13.0" />
+               </font>
+            </Text>
          </children>
       </HBox>
-      <Label fx:id="labelLogro" text="Label" />
+      <Label fx:id="labelLogro">
+         <font>
+            <Font name="Comfortaa Light" size="13.0" />
+         </font>
+      </Label>
    </children>
 </VBox>

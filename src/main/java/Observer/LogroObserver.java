@@ -95,12 +95,4 @@ public class LogroObserver extends EventoJuegoObserver {
         // No necesita hacer nada en este observador
     }
     
-    /**
-     * Obtiene la racha máxima alcanzada durante la partida.
-     * 
-     * @return Racha máxima de aciertos consecutivos
-     */
-    public int getRachaMaxima() {
-        return rachaMaxima;
-    }
 }
